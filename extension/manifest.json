@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "JobCheck — Job Offer Safety",
+  "version": "1.1.0",
+  "description": "Check selected job text for warning signs locally. Includes a link to the public JobCheck website.",
+  "permissions": ["contextMenus"],
+  "action": {"default_title": "Open JobCheck"},
+  "background": {"service_worker": "background.js"},
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"}
+}

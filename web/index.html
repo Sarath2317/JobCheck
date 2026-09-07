@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152820">
+  <meta name="description" content="JobCheck helps students and job seekers spot warning signs in suspicious job offers.">
+  <title>JobCheck — Check before you trust</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to checker</a>
+
+  <header class="topbar">
+    <a class="brand" href="#workspace" aria-label="JobCheck home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.6 4.6 5.4v5.5c0 4.7 3.1 8.6 7.4 10.5 4.3-1.9 7.4-5.8 7.4-10.5V5.4L12 2.6Z" stroke="currentColor" stroke-width="1.7"/>
+          <path d="m8.6 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>
+        <strong>JobCheck</strong>
+        <small>Check before you trust</small>
+      </span>
+    </a>
+
+    <div class="topbar-actions">
+      <a class="text-button" href="https://jobcheck-sarath.sarathmedisetti.chatgpt.site" target="_blank" rel="noopener noreferrer">Open public website</a>
+      <button class="text-button" id="howBtn" type="button">How it works</button>
+      <span class="case-chip" id="caseId">NEW CASE</span>
+    </div>
+  </header>
+
+  <main id="workspace" class="app-shell">
+    <section class="intro" aria-labelledby="pageTitle">
+      <div>
+        <p class="eyebrow">JOB OFFER SAFETY CHECK</p>
+        <h1 id="pageTitle">Turn a suspicious offer into a clear risk report.</h1>
+      </div>
+      <p class="intro-copy">Paste what you received. JobCheck examines common scam signals and explains what to verify before you reply, pay, click, or share documents.</p>
+    </section>
+
+    <section class="workbench" aria-label="JobCheck analyzer">
+      <article class="intake-card">
+        <div class="section-heading">
+          <div>
+            <span class="step-number">01</span>
+            <h2>Evidence input</h2>
+          </div>
+          <button class="sample-button" id="sampleBtn" type="button">Load scam example</button>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Evidence type">
+          <button class="tab active" id="tab-text" type="button" role="tab" aria-selected="true" aria-controls="panel-text" data-tab="text">
+            Job text <span class="input-dot" id="dotText" aria-hidden="true"></span>
+          </button>
+          <button class="tab" id="tab-url" type="button" role="tab" aria-selected="false" aria-controls="panel-url" data-tab="url" tabindex="-1">
+            Job URL <span class="input-dot" id="dotUrl" aria-hidden="true"></span>
+          </button>
+          <button class="tab" id="tab-email" type="button" role="tab" aria-selected="false" aria-controls="panel-email" data-tab="email" tabindex="-1">
+            Sender email <span class="input-dot" id="dotEmail" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="tab-panel" id="panel-text" role="tabpanel" aria-labelledby="tab-text">
+          <label for="jobText">Paste the complete job message</label>
+          <textarea id="jobText" rows="11" placeholder="Include the role, company, salary, requirements, contact details, and any instructions you received."></textarea>
+          <div class="field-meta">
+            <span>More context creates a stronger report.</span>
+            <span id="charCount">0 characters</span>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-url" role="tabpanel" aria-labelledby="tab-url" hidden>
+          <label for="jobUrl">Paste the job listing or application URL</label>
+          <input id="jobUrl" type="url" inputmode="url" autocomplete="url" placeholder="https://company.com/careers/job-123">
+          <div class="context-note">
+            <strong>Structural check only</strong>
+            <p>JobCheck examines the address itself—such as insecure links, shortened URLs, unusual domains, and misleading characters. It does not open the page.</p>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-email" role="tabpanel" aria-labelledby="tab-email" hidden>
+          <label for="jobEmail">Paste the sender's email address</label>
+          <input id="jobEmail" type="email" inputmode="email" autocomplete="email" placeholder="recruiter@company.com">
+          <div class="context-note">
+            <strong>Sender check</strong>
+            <p>JobCheck looks for free-mail addresses, suspicious domain patterns, and mismatches between the sender and job-link domains.</p>
+          </div>
+        </div>
+
+        <div class="input-summary" aria-live="polite">
+          <span id="inputSummary">Add any evidence you have. One field is enough to begin.</span>
+        </div>
+
+        <label class="save-consent"><input type="checkbox" id="saveConsent"> Save this report on this device (includes submitted text)</label>
+        <button class="analyze-button" id="analyzeBtn" type="button">
+          <span>Analyze job offer</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4.5 5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="error-message" id="formError" role="alert"></p>
+      </article>
+
+      <article class="report-card" aria-live="polite" aria-busy="false" id="reportCard">
+        <div class="report-topline">
+          <div>
+            <span class="step-number">02</span>
+            <h2>Evidence report</h2>
+          </div>
+          <span class="report-state" id="reportState">AWAITING EVIDENCE</span>
+        </div>
+
+        <div class="empty-report" id="emptyReport">
+          <div class="empty-file" aria-hidden="true">
+            <svg viewBox="0 0 56 56" fill="none"><path d="M17 8h15l9 9v31H17V8Z" stroke="currentColor" stroke-width="2"/><path d="M32 8v10h10M23 28h12M23 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>No case opened yet</h3>
+          <p>Add a job message, link, or sender email. Your score, warning signs, and verification steps will appear here.</p>
+          <div class="empty-scale" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="report-results" id="reportResults" hidden>
+          <div class="verdict-row">
+            <div>
+              <span class="stamp" id="riskStamp">CAUTION</span>
+              <p class="verdict-note" id="verdictNote">Pause and verify before continuing.</p>
+            </div>
+            <div class="score-block">
+              <span>WARNING SIGNAL SCORE</span>
+              <strong><b id="riskScore">0</b><small>/100</small></strong>
+            </div>
+          </div>
+
+          <div class="meter" role="meter" aria-label="Job-offer risk score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="riskMeter">
+            <div class="meter-track"><span id="meterFill"></span></div>
+            <div class="meter-labels"><span>FEW SIGNALS</span><span>CAUTION</span><span>HIGH</span></div>
+            <p class="score-caveat">Not a probability of fraud. Missing evidence and a low score do not verify an offer. English rule-based checks can miss scams.</p>
+          </div>
+
+          <section class="report-section" aria-labelledby="flagsTitle">
+            <div class="report-section-title">
+              <h3 id="flagsTitle">Warning signs</h3>
+              <span id="flagCount">0 FLAGS</span>
+            </div>
+            <div class="flag-list" id="flagList"></div>
+          </section>
+
+          <section class="report-section" aria-labelledby="notesTitle">
+            <div class="report-section-title"><h3 id="notesTitle">Investigator's notes</h3></div>
+            <p class="analysis-summary" id="analysisSummary"></p>
+          </section>
+
+          <section class="report-section" aria-labelledby="verifyTitle">
+            <div class="report-section-title"><h3 id="verifyTitle">Verify before acting</h3></div>
+            <ul class="verify-list" id="verifyList"></ul>
+          </section>
+
+          <div class="report-actions">
+            <button class="secondary-button" id="copyBtn" type="button">Copy report</button>
+            <button class="primary-button" id="newCaseBtn" type="button">Open new case</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="history-section" aria-labelledby="historyTitle">
+      <div class="history-heading">
+        <div>
+          <p class="eyebrow">SAVED ON THIS DEVICE</p>
+          <h2 id="historyTitle">Recent checks</h2>
+        </div>
+        <button class="text-button danger" id="clearHistoryBtn" type="button" hidden>Clear history</button>
+      </div>
+      <div class="history-empty" id="historyEmpty">No previous checks yet. Your latest reports will appear here.</div>
+      <div class="history-list" id="historyList"></div>
+    </section>
+
+    <section class="method-section" id="howSection" aria-labelledby="methodTitle">
+      <div>
+        <p class="eyebrow">HOW JOBCHECK WORKS</p>
+        <h2 id="methodTitle">A first check, not a final verdict.</h2>
+        <p>JobCheck uses transparent rules to spot common job-scam patterns. It never contacts the company or opens submitted links, so you should still verify the employer through an independently found official website or phone number.</p>
+      </div>
+      <ol class="method-steps">
+        <li><span>1</span><div><strong>Paste</strong><small>Job text, URL, or email</small></div></li>
+        <li><span>2</span><div><strong>Check</strong><small>Common warning signs</small></div></li>
+        <li><span>3</span><div><strong>Understand</strong><small>Risk score and reasons</small></div></li>
+        <li><span>4</span><div><strong>Verify</strong><small>Confirm before acting</small></div></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand"><span class="brand-mark small" aria-hidden="true">✓</span><strong>JobCheck</strong></div>
+    <p>Checks run locally. Saved reports stay in this browser; clear history to remove them. Scores are rule-based warning indicators, not proof or probabilities of fraud.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

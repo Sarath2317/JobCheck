@@ -1,0 +1,39 @@
+JOBCHECK EXTENSION — CHROME / EDGE
+
+1. Extract JobCheck-Extension.zip to a folder you will keep.
+2. Chrome: enter chrome://extensions in the address bar.
+   Edge: enter edge://extensions in the address bar.
+3. Turn on Developer mode, choose Load unpacked, and select the
+   JobCheck-Extension folder containing manifest.json.
+4. Pin JobCheck from the browser's Extensions menu if desired.
+
+USE
+Highlight a job message on an ordinary website, right-click, then choose
+"Check selected text with JobCheck". The local report opens in a new tab.
+Alternatively, click the JobCheck toolbar icon and paste evidence manually.
+Use "Open public website" to visit the online app.
+
+The extension only receives the text you select when you invoke the menu.
+It does not scan pages automatically, read browsing history, or upload job text.
+Up to 30,000 selected characters are transferred; paste longer evidence manually.
+Reports are saved only when you tick Save this report before analysis. The checkbox
+starts off and resets for a new case. Previously saved reports remain until cleared.
+Saved reports live in the extension's browser storage; use Clear history
+to delete them. Extension and website histories are separate.
+Websites may restrict context menus. Browser settings pages may not support
+selection checking; open JobCheck and paste the text instead.
+
+LIMITATIONS
+This is a developer-mode package, not a Chrome Web Store or Edge Add-ons listing.
+It uses the existing rule-based prototype. False positives and missed scams
+are possible. URLs are examined structurally, not fetched or reputation-checked.
+Do not treat low risk as verified employment or the score as a probability.
+Never paste passwords, OTPs, or bank credentials into a checker.
+Regression, syntax and simulated event checks were run; installation in a real desktop
+browser still needs verification.
+
+PUBLIC WEBSITE
+https://jobcheck-sarath.sarathmedisetti.chatgpt.site
+
+OFFICIAL INSTALLATION REFERENCE
+https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world
