@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="20" x2="400" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21483a"/>
+      <stop offset="1" stop-color="#102b23"/>
+    </linearGradient>
+  </defs>
+  <rect width="440" height="280" rx="20" fill="url(#bg)"/>
+  <circle cx="92" cy="92" r="45" fill="#eff8f3"/>
+  <path d="M92 58 70 66v16.5c0 14 9.2 25.6 22 31.3 12.8-5.7 22-17.3 22-31.3V66L92 58Z" fill="#21483a"/>
+  <path d="m81 85.5 6.8 6.8 15.4-16" fill="none" stroke="#a9e3c5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="154" y="92" fill="#fff" font-family="Arial, sans-serif" font-size="34" font-weight="700">JobCheck</text>
+  <text x="154" y="124" fill="#b9c9c1" font-family="Arial, sans-serif" font-size="17">Check before you trust</text>
+  <text x="44" y="186" fill="#fff" font-family="Arial, sans-serif" font-size="22" font-weight="600">Spot warning signs</text>
+  <text x="44" y="214" fill="#fff" font-family="Arial, sans-serif" font-size="22" font-weight="600">in suspicious job offers.</text>
+  <text x="44" y="247" fill="#a9e3c5" font-family="Arial, sans-serif" font-size="16">Private, local and easy to understand.</text>
+</svg>

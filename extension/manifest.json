@@ -3,8 +3,20 @@
   "name": "JobCheck — Job Offer Safety",
   "version": "1.1.0",
   "description": "Check selected job text for warning signs locally. Includes a link to the public JobCheck website.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": ["contextMenus"],
-  "action": {"default_title": "Open JobCheck"},
+  "action": {
+    "default_title": "Open JobCheck",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
   "background": {"service_worker": "background.js"},
   "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"}
 }
