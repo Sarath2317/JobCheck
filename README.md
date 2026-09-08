@@ -2,7 +2,7 @@
 
 Job-offer safety checker for students and job seekers. **Working educational prototype, not a verified fraud detector.**
 
-[Public demo](https://jobcheck-sarath.sarathmedisetti.chatgpt.site)
+[Public demo](https://sarath2317.github.io/JobCheck/)
 
 ## Features
 

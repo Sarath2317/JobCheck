@@ -33,7 +33,7 @@ Regression, syntax and simulated event checks were run; installation in a real d
 browser still needs verification.
 
 PUBLIC WEBSITE
-https://jobcheck-sarath.sarathmedisetti.chatgpt.site
+https://sarath2317.github.io/JobCheck/
 
 OFFICIAL INSTALLATION REFERENCE
 https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world
